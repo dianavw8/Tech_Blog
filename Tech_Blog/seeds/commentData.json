@@ -1,0 +1,14 @@
+[
+    {
+        "text": "That's a greate blog post. very interesting!",
+        "date_posted": "2023-01-01T12:00:00.000Z",
+        "blog_id": 1,
+        "comments_user_id": 2
+    },
+    {
+        "text": "I disagree with your blog.",
+        "date_posted": "2022-10-01T12:00:00.000Z",
+        "blog_id": 3,
+        "comments_user_id": 1
+    }
+]

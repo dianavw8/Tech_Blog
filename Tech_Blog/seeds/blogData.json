@@ -1,0 +1,27 @@
+[
+    {
+        "title": "The Exciting Future of VR (Virtual Reality)",
+        "content": "In recent years, VR technology has made significant strides in terms of both hardware and software advancements. With the release of new VR headsets and controllers, the possibilities for VR applications are endless. From gaming to education to healthcare, the potential uses for VR are vast and exciting. In this post, we'll explore some of the current developments in VR and what we can expect to see in the future.",
+        "created_at": "2023-01-01T12:00:00.000Z",
+        "user_id": 1
+    },
+    {
+        "title": "8 Tips for Getting the Most Out of using Cloud",
+        "content": "Cloud has become an integral part of many businesses' IT infrastructure. With the ability to access, store, and share data and applications from any device with internet access, it's easy to see why. However, it's important to use cloud wisely to get the most out of it. In this post, we'll share eitght tips for maximizing the benefits of cloud.",
+        "created_at": "2022-12-15T12:00:00.000Z",
+        "user_id": 1
+    },
+    {
+        "title": "Why NodeJS is the Future of Data Science",
+        "content": "NodeJS has become the go-to programming language for data science. With its simplicity and versatility, it's no wonder that so many data scientists and engineers are choosing NodeJS over other languages. From data visualization to machine learning, NodeJS has libraries and frameworks that make it easy to perform complex tasks. In this post, we'll explore some of the reasons why NodeJS is the future of data science.",
+        "created_at": "2022-10-01T12:00:00.000Z",
+        "user_id": 2
+    },
+    {
+        "title": "How to Build a Chatbot",
+        "content": "Chatbots have become increasingly popular in recent years, and for good reason. They can automate customer service, answer frequently asked questions, and even assist with sales. In this post, we'll walk you through the process of building a chatbot.",
+        "created_at": "2022-07-15T12:00:00.000Z",
+        "user_id": 2
+    }
+]    
+   
