@@ -1,11 +1,9 @@
-<H1>TEST</H1>
 {{#each blogs as |blog| }}
 <div class="row align-center mb-5">
   <div class="col-md-6">
     <h2>{{blog.title}}</h2>
     <p>{{blog.content}}</p>
-    <p>{{blog.created_at}}</p>
-    <p>{{blog.user.name}}</p>
+    <p>Created By: <b>{{blog.User.name}}</b> at {{{formatDate blog.created_at}}}</p>
   </div>
 </div>
 {{/each}}

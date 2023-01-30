@@ -24,10 +24,18 @@ Comment.init(
     blog_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Blog',
+        key: 'id',
+      },
     },
     comments_user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'User',
+          key: 'id',
+        },
       },
   },
   {
@@ -36,7 +44,7 @@ Comment.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comment',
+    modelName: 'Comment',
 
   }
 );

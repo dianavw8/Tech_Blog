@@ -1,4 +1,8 @@
+const moment = require('moment');
+
+
 module.exports = {
+
   get_emoji: () => {
     const randomNum = Math.random();
     let book = "📗";
@@ -11,4 +15,11 @@ module.exports = {
 
     return `<span for="img" aria-label="book">${book}</span>`;
   },
+
+  moment: moment,
+  
+  formatDate: (date) => {
+    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+  }
+
 };
