@@ -1,0 +1,9 @@
+build:
+  language: node_js
+  node_js:
+  - 12
+
+app:
+  name: radiant-tor-97650
+  buildpacks:
+  - heroku/nodejs

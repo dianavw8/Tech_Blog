@@ -46,6 +46,10 @@ router.get("/editBlog/:blogId", (req, res) => {
 });
 
 router.get('/dashboard', async (req, res) => {
+
+  if (req.session.logged_in == false) {
+    res.redirect('/login');
+
   try {
     const blogData = await Blog.findAll({
       where: {
@@ -65,7 +69,7 @@ router.get('/dashboard', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
+}});
 
 
 router.get('/signup', (req, res) => {
