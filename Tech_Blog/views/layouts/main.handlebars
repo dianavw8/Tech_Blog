@@ -8,15 +8,15 @@
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
+  <header class="display-flex justify-space-between align-center p-2" style="background: lavender;">
     <h1>The Tech Blog</h1>
     <nav>
-      <a href="/">Home</a>
-      <a href="/dashboard">Dashboard</a>
+      <a class="nav-item" href="/">Home</a>
+      <a class="nav-item" href="/dashboard">Dashboard</a>
       {{#if logged_in}}
-        <a href="#" id="logout">logout</a>
+        <a class="nav-item" href="#" id="logout">Logout</a>
       {{else}}
-        <a href="/login">login</a>
+        <a class="nav-item" href="/login">Login</a>
       {{/if}}
     </nav>
   </header>
@@ -42,3 +42,11 @@
 </body>
 
 </html>
+<style>
+
+.nav-item {
+    font-size: x-large;
+    padding-right: 10px;
+}
+
+</style>

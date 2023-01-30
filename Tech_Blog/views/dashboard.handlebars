@@ -1,0 +1,33 @@
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <button class="btn btn-primary" id="add-blog-btn">
+      Add Blog Post
+    </button>
+  </div>
+</div>
+{{#each blogs as |blog index|}}
+  <div class="row align-center mb-10" style="background-color: {{{bgColor index}}};">
+    <div class="col-md-12">
+      <h4>{{blog.title}}
+      <button class="btn btn-primary edit-blog-btn" data-blog-id="{{blog.id}}" style="float: right;">
+        Edit Blog Post
+      </button></h4>
+      <p>created at {{{formatDate blog.created_at}}}</p>
+    </div>
+  </div>
+{{/each}}
+
+<script>
+var editBlogBtns = document.querySelectorAll(".edit-blog-btn");
+editBlogBtns.forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    var blogId = btn.dataset.blogId;
+    console.log(blogId);
+    document.location.replace(`/editBlog?blogId=${blogId}`);
+  });
+});
+</script>
+
+
+
+<script src="/js/dashboard.js"></script>

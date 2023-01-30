@@ -20,6 +20,14 @@ module.exports = {
   
   formatDate: (date) => {
     return moment(date).format('MMMM Do YYYY, h:mm:ss a');
-  }
+  },
 
+  bgColor: (index) => {
+    if (index % 2 === 0) {
+      return "lavender";
+    } else {
+      return "white";
+    }
+  },
+  
 };

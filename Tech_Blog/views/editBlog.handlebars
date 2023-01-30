@@ -1,0 +1,25 @@
+
+<div class="container">
+  <h1>Edit Blog</h1>
+  <form>
+    <div class="form-group">
+      <label for="blogTitle">{{blog.title}}</label>
+      <input type="text" class="form-control" id="blogTitle" placeholder="Enter blog title">
+    </div>
+    <div class="form-group">
+      <label for="blogContent">{{blog.content}}</label>
+      <textarea class="form-control" id="blogContent" rows="5" placeholder="Enter blog content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+<script>
+
+  const blogId = new URL(window.location.href).searchParams.get("blogId");
+
+const blogTitle = document.getElementById("blogTitle");
+const blogContent = document.getElementById("blogContent");
+
+</script>
