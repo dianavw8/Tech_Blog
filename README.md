@@ -31,10 +31,10 @@ Press Enter to create your local clone.
 For more help and information achiving this, check out the following website: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
 ## Usage
-The refactored website can be found at:
+The refactored website can be found at: https://radiant-tor-97650.herokuapp.com
 
 The following image demonstrates the application's appearance and functionality:
-![The Tech Blog image shows the home page with blogs and links to Home, Dashboard, Login](./Tech_Blog/assets/Tech_Blog_Homepage.jpg)
+![The Tech Blog image shows the home page with blogs and links to Home, Dashboard, Login](./assets/Tech_Blog_Homepage.jpg)
 
 ## License
 
