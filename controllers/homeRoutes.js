@@ -46,9 +46,9 @@ router.get("/editBlog/:blogId", (req, res) => {
 });
 
 router.get('/dashboard', async (req, res) => {
-
-  if (req.session.logged_in == false) {
-    res.redirect('/login');
+  if (!req.session.logged_in) {
+    return res.redirect('/login');
+  }
 
   try {
     const blogData = await Blog.findAll({
@@ -61,15 +61,16 @@ router.get('/dashboard', async (req, res) => {
         }
       ]
     });
-    const blogs = blogData.map((blog) => blog.get({ plain: true}));
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
     res.render('dashboard', {
-       blogs, 
-       logged_in: req.session.logged_in
+      blogs,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
   }
-}});
+});
+
 
 
 router.get('/signup', (req, res) => {
