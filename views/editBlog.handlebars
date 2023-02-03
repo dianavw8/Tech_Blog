@@ -10,16 +10,21 @@
       <label for="blogContent">{{blog.content}}</label>
       <textarea class="form-control" id="blogContent" rows="5" placeholder="Enter blog content"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button id="edit-blog-button" data-blog-id="{{id}}">Edit Blog Post</button>
+    {{!-- <button type="submit" class="btn btn-primary">Submit</button> --}}
   </form>
 </div>
 
 
 <script>
-
-  const blogId = new URL(window.location.href).searchParams.get("blogId");
+const blogId = new URL(window.location.href).searchParams.get("blogId");
 
 const blogTitle = document.getElementById("blogTitle");
 const blogContent = document.getElementById("blogContent");
+ const editButton = document.querySelector('#edit-blog-button');
 
+  editButton.addEventListener('click', function() {
+    const blogId = this.getAttribute('data-blog-id');
+    window.location.href = `/editBlog/${blogId}`;
+  });
 </script>
