@@ -9,8 +9,8 @@ The Tech Blog application is a CMS-style blog site similar to a Wordpress site, 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
+- [Contributing](#contributing)
 
 
 ## Installation
@@ -43,7 +43,7 @@ MIT License link: https://github.com/babel/babel/blob/master/LICENSE
 
 ## Contributing
 
-The following are contributers to the making of the E-commerce Back End:
+The following are contributers to the making of the Tech Blog project:
 
 https://shields.io/
 

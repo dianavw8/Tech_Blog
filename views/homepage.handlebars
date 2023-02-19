@@ -1,9 +1,11 @@
 {{#each blogs as |blog| }}
 <div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{blog.title}}</h2>
-    <p>{{blog.content}}</p>
-    <p>Created By: <b>{{blog.User.name}}</b> at {{{formatDate blog.created_at}}}</p>
-  </div>
+    <a href="/commentBlog?blogId={{blog.id}}" class="col-md-12 home-anchor">
+      <div>
+        <h2>{{blog.title}}</h2>
+        <p>{{blog.truncatedContent}}</p>
+        <p>Created By: <b>{{blog.User.name}}</b> at {{{formatDate blog.created_at}}}</p>
+      </div>
+    </a>
 </div>
 {{/each}}

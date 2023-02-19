@@ -21,15 +21,15 @@ form.addEventListener('submit', async (e) => {
     }
 
     // Send the data to the server
-    const response = await fetch('/api/users/signup', {
+    const response = await fetch('/signup', {
         method: 'POST',
         body: JSON.stringify({ email, password, name }),
         headers: { 'Content-Type': 'application/json' },
     });
-
     // Check if the signup was successful
     if (response.ok) {
-        alert('Signup successful!');
+        document.location.replace('/dashboard');
+        
     } else {
         alert('Error signing up');
     }

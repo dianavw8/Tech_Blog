@@ -9,8 +9,8 @@
 
 <body>
   <header class="display-flex justify-space-between align-center p-2" style="background: lavender;">
-    <h1>The Tech Blog</h1>
-    <nav>
+    <h1 class="left-nav">The Tech Blog</h1>
+    <nav class="right-nav">
       <a class="nav-item" href="/">Home</a>
       <a class="nav-item" href="/dashboard">Dashboard</a>
       {{#if logged_in}}
@@ -49,4 +49,89 @@
     padding-right: 10px;
 }
 
+.card {
+    box-shadow: 5px 5px slategrey;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.top-label {
+      display: block;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.blog-title-input{
+
+
+    width: -webkit-fill-available;
+    font-size: large;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.blog-content-textarea{
+ 
+    min-height: 300px;
+    width: -webkit-fill-available;
+    font-size: large;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.colored-submit-button{
+     background-color: lavender;
+    font-size: large;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+.colored-submit-button:hover{
+     background-color: rgb(208, 208, 248); 
+}
+
+.delete-button{
+      background: rgb(247, 183, 183);
+    font-size: large;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+.delete-button:hover{
+      background: rgb(246,136,136);
+
+}
+
+.btn{
+  margin: 5px 0;
+}
+
+.right-nav{
+    display: inline-block;
+    float: right;
+}
+
+.left-nav{
+    display: inline-block;
+}
+
+.home-anchor{
+      text-decoration-style: dotted;
+
+}
+
+.login-container{
+  
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.right-choice{
+    display: inline-block;
+    float: right;
+    padding-top: 15px;
+}
 </style>

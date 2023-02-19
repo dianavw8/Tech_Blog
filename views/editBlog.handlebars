@@ -1,30 +1,86 @@
 
 <div class="container">
   <h1>Edit Blog</h1>
-  <form>
-    <div class="form-group">
-      <label for="blogTitle">{{blog.title}}</label>
-      <input type="text" class="form-control" id="blogTitle" placeholder="Enter blog title">
-    </div>
-    <div class="form-group">
-      <label for="blogContent">{{blog.content}}</label>
-      <textarea class="form-control" id="blogContent" rows="5" placeholder="Enter blog content"></textarea>
-    </div>
-    <button id="edit-blog-button" data-blog-id="{{id}}">Edit Blog Post</button>
-    {{!-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-  </form>
+  <div class="card">
+
+    <form>
+      <div class="form-group">
+        <label class="top-label" for="blogTitle">Blog Title</label>
+        <input type="text" class="form-control blog-title-input" id="blogTitle" placeholder="Enter blog title" value="{{blog.title}}">
+      </div>
+      <div class="form-group">
+        <label class="top-label" for="blogContent">Blog Content</label>
+        <textarea class="form-control blog-content-textarea" id="blogContent" rows="5" placeholder="Enter blog content">{{blog.content}}</textarea>
+      </div>
+      <button id="edit-blog-button" class="btn btn-primary" data-blog-id="{{blog.id}}">Edit Blog Post</button>
+      <button id="delete-blog-button" class="btn btn-danger" data-blog-id="{{blog.id}}">Delete</button>
+      {{!-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+    </form>
+
+  </div>
 </div>
 
 
 <script>
-const blogId = new URL(window.location.href).searchParams.get("blogId");
 
-const blogTitle = document.getElementById("blogTitle");
-const blogContent = document.getElementById("blogContent");
- const editButton = document.querySelector('#edit-blog-button');
+const blogTitleEl = document.getElementById("blogTitle");
+const blogContentEl = document.getElementById("blogContent");
+ const editButtonEl = document.querySelector('#edit-blog-button');
+ const deleteButtonEl = document.getElementById("delete-blog-button");
 
-  editButton.addEventListener('click', function() {
+  editButtonEl.addEventListener('click', function(event) {
+     event.preventDefault();
     const blogId = this.getAttribute('data-blog-id');
-    window.location.href = `/editBlog/${blogId}`;
+
+    //save info changed
+    let blogTitle = blogTitleEl.value;
+    let blogContent = blogContentEl.value;
+
+    console.log('blogTitle', blogTitle);
+    console.log('blogContent', blogContent);
+
+    fetch(`/api/blogs/updateBlog/${blogId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ blogTitle, blogContent })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        document.location.replace('/dashboard');
+
+    })
+    .catch(error => {
+        console.error(error);
+        document.location.replace('/dashboard');
+
+    });
+
   });
+
+  deleteButtonEl.addEventListener('click', function(event) {
+     event.preventDefault();
+    const blogId = this.getAttribute('data-blog-id');
+
+    
+    fetch(`/api/blogs/deleteBlog/${blogId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ blogTitle, blogContent })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("data");
+        console.log(data);
+        document.location.replace('/dashboard');
+
+    })
+    .catch(error => {
+        console.error(error);
+        document.location.replace('/dashboard');
+
+    });
+
+  });
+
 </script>

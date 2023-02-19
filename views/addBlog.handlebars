@@ -1,18 +1,23 @@
 
 <div class="container">
-  <h1>Edit Blog</h1>
-  <form>
-    <div class="form-group">
-      <label for="blogTitle">Blog Title:</label>
-      <input type="text" class="form-control" id="blogTitle" placeholder="Enter blog title">
-    </div>
-    <div class="form-group">
-      <label for="blogContent">Blog Content:</label>
-      <textarea class="form-control" id="blogContent" rows="5" placeholder="Enter blog content"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  <h1>Add Blog</h1>
+
+  <div class="card">
+    <form>
+      <div class="form-group">
+        <label class="top-label" for="blogTitle">Blog Title</label>
+        <input type="text" class="form-control blog-title-input" id="blogTitle" placeholder="Enter blog title" value="{{blog.title}}">
+      </div>
+      <div class="form-group">
+        <label class="top-label" for="blogContent">Blog Content</label>
+        <textarea class="form-control blog-content-textarea" id="blogContent" rows="5" placeholder="Enter blog content">{{blog.content}}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
 
 
-<script src="/js/editBlog.js"></script>
+
+
+<script src="/js/addBlog.js"></script>

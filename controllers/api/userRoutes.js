@@ -44,20 +44,6 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.post('/signup', async (req, res) => {
-  try {
-      const { email, password, name } = req.body
-      const saltRounds = 10
-      const newUser = new User({ email, password, name })
-      await newUser.save()
-      res.status(201).send('User created successfully')
-  } catch (error) {
-      console.log(error)
-      res.status(500).send('Error creating user')
-  }
-})
-
-
 router.post('/addBlog', async (req, res) => {
   try {
   const { blogTitle, blogContent } = req.body;
