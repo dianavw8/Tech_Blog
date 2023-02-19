@@ -20,7 +20,7 @@ Blog.hasMany(Comment, {
 });
 
 Comment.belongsTo(User, {
-foreignKey: 'user_id',
+foreignKey: 'comments_user_id',
 });
 Comment.belongsTo(Blog, {
     foreignKey: 'comment_id',

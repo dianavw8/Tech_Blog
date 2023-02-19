@@ -3,69 +3,37 @@ const { User } = require('../../models');
 const { Blog } = require('../../models');
 const { Comment } = require('../../models');
 
-//comment on existing blogs
-//save comments by clicking submit button redirected to dashboard
+//create comment on existing blogs
+//save update comments by clicking submit button redirected to dashboard to see blog and updatedcomments
 //comment username and date created must be shown
 
-router.get("/:blogId", (req, res) => {
-    const blogId = req.params.blogId;
-  
-    const blog = Blog.findOne({ where: { id: blogId} });
-    if (!blog) {
-      return res.status(404).send({ error: "Blog not found" });
-    }
-  
-    res.status(200).json(blog);
-  });
 
-  router.post('/addBlog', async (req, res) => {
+  router.post('/addComment', async (req, res) => {
     try {
-    const { blogTitle, blogContent } = req.body;
-    const user_id = req.session.user_id;
-    const created_at = new Date();
-    const newBlog = new Blog({
-        title: blogTitle,
-        content: blogContent,
-        created_at,
-        user_id
+    const { commentText, blog_id } = req.body;
+    const comments_user_id = req.session.user_id;
+    const date_posted = new Date();
+    const newComment = new Comment({
+        blog_id,
+        text: commentText,
+        date_posted,
+        comments_user_id
     });
-    await newBlog.save()
-    res.status(201).send('Blog created successfully')
+    await newComment.save()
+
+      // Fetch the comment with the associated user
+      const commentWithUser = await Comment.findByPk(newComment.id, {
+        include: { model: User },
+      });
+  
+      res.status(201).json(commentWithUser);
   } catch (error) {
     console.log(error)
-    res.status(500).send('Error creating blog')
+    res.status(500).send('Error creating comment')
   }
   });
 
-  router.put('/updateBlog/:blogId', async (req, res) => {
-    const blogId = req.params.blogId;
-  
-    const blog = await Blog.findOne({ where: { id: blogId } });
-    if (!blog) {
-      return res.status(404).send({ error: `Blog ${blogId} not found` });
-    }
-  
-    blog.title = req.body.blogTitle;
-    blog.content = req.body.blogContent;
-    await blog.save();
-  
-    res.send({ message: `Blog ${blogId} updated successfully` });
-  });
   
 
-
-  router.delete ('/deleteBlog/:blogId', async (req, res) => {
-    const blogId = req.params.blogId;
-  
-    const blog = await Blog.findOne({ where: { id: blogId } });
-    if (!blog) {
-      return res.status(404).send({ error: `Blog ${blogId} not found` });
-    }
-  
-    await blog.destroy();
-  
-    res.send({ message: `Blog ${blogId} deleted successfully` });
-    
-  });
   
 module.exports = router;

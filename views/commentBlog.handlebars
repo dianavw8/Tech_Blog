@@ -1,32 +1,31 @@
   
-  <div>
-  <h2>{{blog.title}}</h2>
+<div class="card comment-blog-card">
+  <h2 class="text-primary">{{blog.title}}</h2>
   <p>{{blog.content}}</p>
-  <p>Created By: <b>{{blog.User.name}}</b> at {{{formatDate blog.created_at}}}</p>
+  <p>Created By: <b>{{blog.User.name}}</b> on {{{formatDate blog.created_at}}}</p>
 </div>
 
-<div>
-  <h3>Add a comment</h3>
+<div class="card comment-blog-card">
+  <h3 class="text-info">Add a comment</h3>
   <form id="comment-form">
-    <textarea id="comment-content" rows="4" cols="50" placeholder="Enter your comment"></textarea>
+    <textarea class="comment-content-textarea" id="comment-content" rows="4" cols="50" placeholder="Enter your comment"></textarea>
     <br>
-    <button type="submit" id="comment-submit">Submit</button>
+    <button class="btn btn-info" type="submit" id="comment-submit">Submit</button>
   </form>
 </div>
 
-<div>
-  <h3>Comments</h3>
-  <ul id="comment-list">
-    {{#each comments as |comment|}}
-    <li>
-      <p>{{comment.content}}</p>
-      <p>By {{comment.User.name}} at {{{formatDate comment.created_at}}}}</p>
-    </li>
+<div class="card comment-blog-card">
+  <h3 class="text-primary">Comments</h3>
+    {{#each blog.Comments as |comment|}}
+    <div class="comment-entry">
+      <p class="comment-text">{{comment.text}}</p>
+      <p>By {{comment.User.name}} on {{{formatDate comment.date_posted}}}</p>
+    </div>
     {{/each}}
-  </ul>
 </div>
-
 <script>
+  
+
   const commentForm = document.getElementById('comment-form');
   const commentContent = document.getElementById('comment-content');
   const commentList = document.getElementById('comment-list');
@@ -35,22 +34,26 @@
     event.preventDefault();
 
     // Send a POST request to the server to create a new comment
-    const response = await fetch('/comments/create', {
+    const response = await fetch('/api/comments/addComment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: commentContent.value,
-        blogId: '{{blog.id}}' // Replace with the actual blogId
+        commentText: commentContent.value,
+        blog_id: '{{blog.id}}' // Replace with the actual blogId
       })
     });
 
     if (response.ok) {
       // Add the new comment to the list
+      console.log('response');
+      console.log(response);
       const comment = await response.json();
+      console.log('comment');
+      console.log(comment);
       commentList.insertAdjacentHTML('beforeend', `
         <li>
-          <p>${comment.content}</p>
-          <p>By ${comment.User.name} at ${formatDate(comment.created_at)}</p>
+          <p>${comment.text}</p>
+          <p>By ${comment.User.name} on ${formatDate(comment.date_posted)}</p>
         </li>
       `);
 
@@ -61,4 +64,22 @@
       console.error('Failed to create comment');
     }
   });
+
+
+  function formatDate(date) {
+    const formattedDate = new Date(date);
+    const year = formattedDate.getFullYear();
+    const month = formattedDate.toLocaleString('default', { month: 'long' });
+    const day = formattedDate.getDate();
+    const hours = formattedDate.getHours();
+    const minutes = formattedDate.getMinutes();
+    const seconds = formattedDate.getSeconds();
+    const amOrPm = hours >= 12 ? 'PM' : 'AM';
+    const twelveHourFormat = hours % 12 || 12;
+    const formattedTime = `${twelveHourFormat}:${minutes}:${seconds} ${amOrPm}`;
+  
+    return `${month} ${day}, ${year}, ${formattedTime}`;
+  }
+
+
 </script>

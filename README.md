@@ -33,8 +33,17 @@ For more help and information achiving this, check out the following website: ht
 ## Usage
 The refactored website can be found at: https://radiant-tor-97650.herokuapp.com
 
-The following image demonstrates the application's appearance and functionality:
-![The Tech Blog image shows the home page with blogs and links to Home, Dashboard, Login](./assets/Tech_Blog_Homepage.jpg)
+The following image demonstrates the application's appearance and functionality in the Home page:
+![The Tech Blog image shows the home page with blogs and links to Home, Dashboard, Login](./assets/Tech_Blog_Home_.jpg)
+
+The following image demonstrates the application's appearance and functionality in editing your blog:
+![The Tech Blog image shows the home page with blogs and links to Home, Dashboard, Login](./assets/Tech_Blog_Edit_Blog_.jpg)
+
+The following image demonstrates the application's appearance and functionality in adding a blog:
+![The Tech Blog image shows the home page with blogs and links to Home, Dashboard, Login](./assets/Tech_Blog_Add_Blog_.jpg)
+
+The following image demonstrates the application's appearance and functionality when commenting and seeing other comments on a blog:
+![The Tech Blog image shows the home page with blogs and links to Home, Dashboard, Login](./assets/Tech_Blog_Comments_.jpg)
 
 ## License
 

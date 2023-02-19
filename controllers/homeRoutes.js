@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User} = require('../models');
+const { Blog, User, Comment} = require('../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -62,6 +62,36 @@ router.get ('/editBlog/:blogId', async (req, res) => {
         blog: blog.toJSON()
     });
 });
+
+router.get('/commentBlog/:blogId', async (req, res) => {
+  const blogId = req.params.blogId;
+  
+
+  const blog = await Blog.findOne({ 
+
+    where: { id: blogId} ,
+    
+    include: [
+      {
+        model: User
+      },
+      {
+        model: Comment,
+        include: [User] // Include the User associated with each Comment
+      }
+    ]
+
+  });
+
+  if (!blog) {
+    return res.status(404).send({ error: `Blog ${blogId} not found` });
+  }
+    
+      res.render('commentBlog',{
+        blog: blog.toJSON()
+    });
+});
+
 
 // router.post('/editBlog/:blogId', async (req, res) => {
 //   const blogId = req.params.blogId;
